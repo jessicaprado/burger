@@ -22,9 +22,10 @@ app.post('/', function (req, res){
 });
 
 app.put('/update/:id', function(req, res) {
-	var updatedBurger = 'id: ' + req.params.id;
-	console.log(updatedBurger);
-	connection.query("UPDATE burger SET devoured = ? WHERE id = ?", ({devoured: req.body.devoured}), updatedBurger, function(err, data){
+	var updatedBurger = req.params.id;
+	console.log(req);
+	connection.query("UPDATE burger SET devoured = ? WHERE id = ?", [req.body.devoured, updatedBurger], function(err, data){
+		console.log(err);
 		res.redirect('/');
 	})
 })

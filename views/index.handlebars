@@ -6,16 +6,17 @@
 		<img class= "burgerIMG" style="width:300px" src= "/assets/img/burgerlove.png">
 	</div>
 
-	<div class="col-md-4 notEaten">
+	<div class="notEaten">
 		<ul>
 		  {{#each burger}}
-		  	{{#unless devoured}}
+		  	{{#unless this.devoured}}
 		    	<li>
-		      		<h4>{{this.id}} {{this.burger_name}}</h4>
-		      		<form action='/update/{{this.id}}?_method=PUT' method='POST'>
-						<input type='hidden' name='devoured' value='true>
-						<button type='submit'> NOM NOM </button>				
-					</form>
+		      		<h4>{{this.id}} {{this.burger_name}}
+		      			<form action='update/{{this.id}}?_method=PUT' method='POST'>
+							<input type="hidden" name="devoured" value="true">
+          					<button class="eat" type="submit">NOM NOM</button>
+						</form>
+					</h4>	
 		      	</li>
 		      {{/unless}}
 		  {{/each}}
@@ -24,12 +25,12 @@
 
 
 
-	<div class="col-md-4 eaten">
+	<div class="eaten">
 		<ul>
-			{{#each burgers}}
+			{{#each burger}}
 				{{#if this.devoured}}
 					<li>
-						<h5>{{this.id}}. {{this.burger_name}}</h5>
+						<h4>{{this.id}}. {{this.burger_name}}</h4>
 					</li>
 				{{/if}}
 			{{/each}}
