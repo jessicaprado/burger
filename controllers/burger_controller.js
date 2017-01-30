@@ -1,22 +1,32 @@
 var express = require('express');
+var app = express();
+var burger = require('../models/burger.js');
 var connection = require('../config/connection.js');
 
-//var burger = require('../models/burger.js');
+module.exports = function(app, connection){
 
-module.exports = function() {
 app.get("/", function(req, res) {
-
-    connection.query("SELECT * FROM burger_db.burger;", function(err, data) {
+    connection.query("SELECT * FROM burger;", function(err, data) {
       if (err) throw err;
-
-      // Test it
-      console.log('The solution is: ', data);
-
-      // Test it
-      // res.send(data);
-
-      res.render("index", { name: data });
+      res.render("index", {burger: data});
     });
 });
+
+app.post('/', function (req, res){
+	console.log(req.body);
+	connection.query("INSERT INTO burger (burger_name, devoured) VALUES (?, ?)", [req.body.burger, req.body.devoured], function (err, data){
+		if (err) throw err;
+		console.log(data);
+    	res.redirect("/");
+	})
+});
+
+app.put('/update/:id', function(req, res) {
+	var updatedBurger = 'id: ' + req.params.id;
+	console.log(updatedBurger);
+	connection.query("UPDATE burger SET devoured = ? WHERE id = ?", ({devoured: req.body.devoured}), updatedBurger, function(err, data){
+		res.redirect('/');
+	})
+})
 
 }

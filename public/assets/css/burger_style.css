@@ -1,0 +1,53 @@
+body {
+	background-color: rgb(140, 218, 255);
+}
+
+h1 {
+	text-align: center;
+}
+
+img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+}
+
+.notEaten {
+	position: relative;
+	display: inline-block;
+	float: left;
+}
+
+.eaten {
+	border: solid black 1px;
+	position: relative;
+	display: inline-block;
+	float: right;
+}
+
+form {
+  position: relative; 
+  width  : 500px;
+  height : 50px;
+  margin : 0 auto;
+}
+
+textarea {
+	position: relative; 
+	margin-left: auto;
+	margin-right: auto;
+	width  : 500px;
+  	height : 50px;
+}
+
+li {
+    list-style-type: none;
+}
+
+.submit {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+}

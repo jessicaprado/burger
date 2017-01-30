@@ -6,6 +6,6 @@ CREATE TABLE burger
 	id int NOT NULL AUTO_INCREMENT,
 	name varchar(255) NOT NULL,
 	devoured BOOLEAN DEFAULT false,
-    date TIMESTAMP,
+    eaten_at TIMESTAMP,
 	PRIMARY KEY (id)
 );
