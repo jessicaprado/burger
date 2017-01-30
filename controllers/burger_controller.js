@@ -12,20 +12,16 @@ app.get("/", function(req, res) {
     });
 });
 
-app.post('/', function (req, res){
-	console.log(req.body);
+app.post('/create', function (req, res){
 	connection.query("INSERT INTO burger (burger_name, devoured) VALUES (?, ?)", [req.body.burger, req.body.devoured], function (err, data){
 		if (err) throw err;
-		console.log(data);
     	res.redirect("/");
 	})
 });
 
-app.put('/update/:id', function(req, res) {
-	var updatedBurger = req.params.id;
-	console.log(req);
-	connection.query("UPDATE burger SET devoured = ? WHERE id = ?", [req.body.devoured, updatedBurger], function(err, data){
-		console.log(err);
+app.post('/update/:id', function(req, res) {
+	console.log(req.params.id);
+	connection.query("UPDATE burger SET devoured=1 WHERE id = ?", [req.params.id], function(err, data){
 		res.redirect('/');
 	})
 })
