@@ -20,7 +20,9 @@ app.use(bodyParser.text({ type: 'text/html' }));
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-controller(app, connection);
+
+var routes = require('./controllers/burger_controller.js');
+app.use('/', routes);
 
 app.listen(PORT, function(){
   console.log('Listening on PORT: ' + PORT);
