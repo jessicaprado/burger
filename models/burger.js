@@ -9,8 +9,12 @@ var burger = {
 	create: function(name, cb) {
 		orm.create('burger', name, function(res){
 			cb(res);
-			console.log("res: " + res);
 		})
+	},
+  	update: function(condition, cb) {
+    	orm.update(condition, function(res) {
+      	cb(res);
+    	});
 	}
 }
 

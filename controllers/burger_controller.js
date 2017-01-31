@@ -14,17 +14,15 @@ router.post('/create', function (req, res){
 	burger.create([req.body.burger, req.body.devoured], function (err, data){
 		if (err) throw err;
     	res.redirect("/");
-    	console.log("data: " + data);
-    	console.log("burger: " + req.body.burger);
-    	console.log("devoured: " + req.body.devoured);
 	});
 });
 
-/*router.post('/update/:id', function(req, res) {
-	console.log(req.params.id);
-	connection.query("UPDATE burger SET devoured=1 WHERE id = ?", [req.params.id], function(err, data){
+router.put('/update/:id', function(req, res) {
+	var condition = req.params.id;
+	console.log(condition);
+	burger.update(condition, function(){
 		res.redirect('/');
 	})
-})*/
+})
 
 module.exports = router;

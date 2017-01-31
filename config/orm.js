@@ -14,13 +14,17 @@ var orm = {
 
 		connection.query(queryString, vals, function (err, result) {
 			if (err) throw err;
-			console.log("cb results[0]: " + result[0]);
+			cb(result[0]);
+		});
+	},
+	update: function(condition, cb) {
+		var queryString = "UPDATE burger SET devoured=1 WHERE id =" + condition;
+		console.log(queryString);
+		connection.query(queryString, function (err, result) {
+			if (err) throw err;
 			cb(result[0]);
 		});
 	}
-
-
-
 };
 
 module.exports = orm;
