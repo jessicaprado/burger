@@ -7,16 +7,23 @@ var orm = {
 			if (err) throw err;
 			cb(result);
 		})	
+	},
+	create: function(tableInput, vals, cb) {
+		var queryString = "INSERT INTO " + tableInput + " (burger_name, devoured) VALUES (?, ?);";
+		console.log(queryString);
+
+		connection.query(queryString, vals, function (err, result) {
+			if (err) throw err;
+			console.log("cb results[0]: " + result[0]);
+			cb(result[0]);
+		});
 	}
+
+
+
 };
 
 module.exports = orm;
 
 	
 
-/*  selectWhere: function(tableInput, colToSearch, valOfCol) {
-    var queryString = "SELECT * FROM ?? WHERE ?? = ?";
-    connection.query(queryString, [tableInput, colToSearch, valOfCol], function(err, result) {
-      console.log(result);
-    });
-  },*/
